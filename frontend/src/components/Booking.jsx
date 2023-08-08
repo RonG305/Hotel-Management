@@ -4,8 +4,12 @@ import {RiDeleteBin6Line} from 'react-icons/ri'
 const Booking = () => {
   return (
       <div className=" overflow-x-auto">
-          <div className=' border rounded-md mx-3 my-5 py-5 px-3 flex justify-between'>
+      <div className=' border rounded-md mx-3 my-5 py-5 px-3 flex justify-between'>
+            <div>
               <h2 className=' font-bold text-2xl'>Booking List</h2>
+              <p>You have 203 rooms booked</p>
+            </div>
+            
               <FiSettings size={25} />
           </div>
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 mt-5 border rounded-md ">

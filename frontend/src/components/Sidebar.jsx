@@ -1,6 +1,7 @@
-import { FiSettings, FiBookOpen, FiUser, FiDollarSign, FiAlertOctagon, } from 'react-icons/fi'
-import { RxDashboard } from 'react-icons/rx'
-import {Button} from 'flowbite-react'
+import { FiSettings, FiBookOpen, FiUser, FiDollarSign, FiAlertOctagon } from 'react-icons/fi'
+import { RxDashboard, RxHome } from 'react-icons/rx'
+import { Button } from 'flowbite-react'
+import { Link } from 'react-router-dom'
 
 
 
@@ -18,9 +19,10 @@ const Sidebar = () => {
           </div>
           <div className=" text-blue-300">
               <ul className=" font-bold flex flex-col gap-5">
-                  <li className={sidebarLinkStyles} ><RxDashboard  size={25}/><span className=' md:flex hidden'>Dashboard</span></li>
-                  <li className={sidebarLinkStyles}><FiBookOpen size={25} /><span className=' md:flex hidden'>Bookings</span> </li>
-                  <li className={sidebarLinkStyles}><FiUser size={25} /> <span className=' md:flex hidden'>Customers</span></li>
+                  <Link to='/'><li className={sidebarLinkStyles} ><RxDashboard size={25} /><span className=' md:flex hidden'>Dashboard</span></li></Link>
+                  <Link to='bookings/'><li className={sidebarLinkStyles}><FiBookOpen size={25} /><span className=' md:flex hidden'>Bookings</span> </li></Link>
+                  <Link to='rooms/'><li className={sidebarLinkStyles}><RxHome size={25} /><span className=' md:flex hidden'>Rooms</span> </li></Link>
+                  <Link to='customers/'> <li className={sidebarLinkStyles}><FiUser size={25} /> <span className=' md:flex hidden'>Customers</span></li></Link>
                   <li className={sidebarLinkStyles}><FiDollarSign size={25} /><span className=' md:flex hidden'>Payments</span></li>
                   <li className={sidebarLinkStyles}><FiAlertOctagon size={25}/><span className=' md:flex hidden'>Reports</span></li>
                   <li className={sidebarLinkStyles}><FiSettings size={25} /><span className=' md:flex hidden'>Settings</span></li>

@@ -5,7 +5,15 @@ import {RiDeleteBin6Line} from 'react-icons/ri'
 const Customers = () => {
   return (
       <div className=" overflow-x-auto">
-          <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 mt-5 ">
+              <div className=' border rounded-md mx-3 my-5 py-5 px-3 flex justify-between'>
+                  <div>
+                  <h2 className=' font-bold text-2xl'>Customer List</h2>
+                  <p>You have 368 customers</p>
+                  </div>
+             
+              {/* <FiSettings size={25} /> */}
+          </div>
+          <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 mt-5 border rounded-md">
               <thead className=" uppercase">
               <tr>
                   <th className=" px-6 py-4">Name</th>

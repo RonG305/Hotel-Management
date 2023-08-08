@@ -6,8 +6,12 @@ const Room = () => {
   return (
       <div>
           <div className=" overflow-x-auto">
-          <div className=' border rounded-md mx-3 my-5 py-5 px-3 flex justify-between'>
-              <h2 className=' font-bold text-2xl'>Room List</h2>
+              <div className=' border rounded-md mx-3 my-5 py-5 px-3 flex justify-between'>
+                  <div>
+                  <h2 className=' font-bold text-2xl'>Room List</h2>
+                  <p>Here is our various rooms</p>
+                  </div>
+             
               <FiSettings size={25} />
           </div>
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 mt-5 border rounded-md ">
@@ -34,7 +38,7 @@ const Room = () => {
                       <td className='px-6 py-4'>Breakfast</td>
                       <td className=" px-6 py-4">3</td>
                       <td className=" px-6 py-4">35.25 USD</td>
-                      <td className=" px-6 py-4">paid</td>
+                      <td className=" px-6 py-4 font-bold text-pink-800">booked</td>
                      
                       <td className=" px-6 py-4">
                       <tr>
@@ -52,7 +56,7 @@ const Room = () => {
                       <td className='px-6 py-4'>Breakfast</td>
                       <td className=" px-6 py-4">3</td>
                       <td className=" px-6 py-4">35.25 USD</td>
-                      <td className=" px-6 py-4">paid</td>
+                      <td className=" px-6 py-4 font-bold text-green-600">open</td>
                      
                       <td className=" px-6 py-4">
                       <tr>
@@ -71,7 +75,7 @@ const Room = () => {
                       <td className='px-6 py-4'>Breakfast</td>
                       <td className=" px-6 py-4">3</td>
                       <td className=" px-6 py-4">35.25 USD</td>
-                      <td className=" px-6 py-4">paid</td>
+                      <td className=" px-6 py-4 font-bold text-pink-800">booked</td>
                      
                       <td className=" px-6 py-4">
                       <tr>
@@ -89,7 +93,7 @@ const Room = () => {
                       <td className='px-6 py-4'>Breakfast</td>
                       <td className=" px-6 py-4">3</td>
                       <td className=" px-6 py-4">35.25 USD</td>
-                      <td className=" px-6 py-4">paid</td>
+                      <td className=" px-6 py-4 font-bold text-pink-800">booked</td>
                      
                       <td className=" px-6 py-4">
                       <tr>
@@ -107,7 +111,7 @@ const Room = () => {
                       <td className='px-6 py-4'>Breakfast</td>
                       <td className=" px-6 py-4">3</td>
                       <td className=" px-6 py-4">35.25 USD</td>
-                      <td className=" px-6 py-4">paid</td>
+                      <td className=" px-6 py-4 font-bold text-pink-800">booked</td>
                      
                       <td className=" px-6 py-4">
                       <tr>
