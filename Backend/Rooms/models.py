@@ -5,12 +5,27 @@ from django.db import models
 class Room(models.Model):
     STATUS = [
         ('booked', 'booked'),
-        ('open', 'open')
+        ('open', 'open'),
+        ('inactive', 'inactive')
+    ]
+    
+    MEAL = [
+        ('breakfast', 'breakfast'),
+        ('lunch', 'lunch'),
+        ('dinner', 'dinner'),
+        ('two', 'two'),
+        ('all', 'all')
+    ]
+    
+    AIR_CONDITION = [
+        ('AC', 'AC'),
+        ('No AC', 'No AC')
     ]
     room_number = models.CharField(max_length=20)
     room_type = models.CharField(max_length=100)
-    meal = models.CharField(max_length=250)
+    meal = models.CharField(max_length=250, choices=MEAL)
     bed_capacity = models.IntegerField()
+    air_condition = models.CharField(max_length=100, choices=AIR_CONDITION)
     rent = models.IntegerField()
     status = models.CharField(max_length=250, choices=STATUS)
     

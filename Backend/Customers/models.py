@@ -8,8 +8,16 @@ class Customer(models.Model):
         ('inside', 'inside'),
         ('checked', 'checked')
     ]
+    
+    GENDER = [
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+        ('other', 'other')
+    ]
     first_name = models.CharField(max_length=250)
     last_name = models.CharField(max_length=250)
+    gender = models.CharField(max_length=250, choices=GENDER)
+    email_address = models.EmailField()
     phone_number = models.CharField(max_length=20)
     room_number = models.ForeignKey(Room, on_delete=models.CASCADE)
     checkin = models.DateTimeField()
