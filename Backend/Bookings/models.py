@@ -4,6 +4,14 @@ from Rooms.models import Room
 
 
 class Booking(models.Model):
+    ROOM_TYPE = [
+        ('delux', 'delux'),
+        ('super delux', 'super delux'),
+        ('Single', 'Single'),
+        ('Double', 'Double')
+
+    ]
+
     STATUS = [
         ('inside', 'inside'),
         ('checked', 'checked')
@@ -25,7 +33,7 @@ class Booking(models.Model):
     gender = models.CharField(max_length=100, choices=GENDER)
     phone_number = models.CharField(max_length=20)
     room_number = models.ForeignKey(Room, on_delete=models.CASCADE)
-    room_type = models.CharField(max_length=100)
+    room_type = models.CharField(max_length=100, choices=ROOM_TYPE)
     email_address = models.EmailField()
     address = models.CharField(max_length=100)
     checkin = models.DateField()

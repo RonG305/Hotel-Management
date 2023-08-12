@@ -7,6 +7,8 @@ import Room from './components/Room'
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Dashboard from './pages/Dashboard'
+import Payment from './components/Payment'
+import BookingForm from './components/BookingForm'
 
 function App() {
   
@@ -22,6 +24,8 @@ function App() {
           <Route path='bookings/' element={<Booking />} />
           <Route path='rooms/' element={<Room />} />
           <Route path='customers/' element={<Customers />} />
+          <Route path='payment/' element={<Payment />} />  
+          <Route path='bookings/addBooking/' element={<BookingForm />} />  
           </Routes>
         </div>
       </Router>

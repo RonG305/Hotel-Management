@@ -2,13 +2,21 @@ from django.db import models
 
 # Create your models here.
 
+
 class Room(models.Model):
+    ROOM_TYPE = [
+        ('delux', 'delux'),
+        ('super delux', 'super delux'),
+        ('Single', 'Single'),
+        ('Double', 'Double')
+
+    ]
     STATUS = [
         ('booked', 'booked'),
         ('open', 'open'),
         ('inactive', 'inactive')
     ]
-    
+
     MEAL = [
         ('breakfast', 'breakfast'),
         ('lunch', 'lunch'),
@@ -16,7 +24,7 @@ class Room(models.Model):
         ('two', 'two'),
         ('all', 'all')
     ]
-    
+
     AIR_CONDITION = [
         ('AC', 'AC'),
         ('No AC', 'No AC')
@@ -27,11 +35,10 @@ class Room(models.Model):
     bed_capacity = models.IntegerField()
     air_condition = models.CharField(max_length=100, choices=AIR_CONDITION)
     rent = models.IntegerField()
-    status = models.CharField(max_length=250, choices=STATUS)
-    
+    status = models.CharField(max_length=250, default='open')
+
     def __str__(self):
         return self.room_number
-    
+
     class Meta:
         db_table = 'Room'
-    

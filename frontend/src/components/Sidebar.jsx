@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 const Sidebar = () => {
     const sidebarLinkStyles = 'flex gap-3 hover:bg-blue-700 cursor-pointer rounded-sm px-4 py-2 ease-in duration-300' 
   return (
-      <div className=" md:w-72 h-[100vh] bg-blue-950  px-5 absolute ">
+      <div className=" md:w-72 h-[100vh] bg-blue-950  px-5 fixed ">
           <div className=" md:flex gap-3 items-center py-5">
               <img className=' w-16 md:w-20' src="../../public/logo.png" alt="" />
               
@@ -23,7 +23,8 @@ const Sidebar = () => {
                   <Link to='bookings/'><li className={sidebarLinkStyles}><FiBookOpen size={25} /><span className=' md:flex hidden'>Bookings</span> </li></Link>
                   <Link to='rooms/'><li className={sidebarLinkStyles}><RxHome size={25} /><span className=' md:flex hidden'>Rooms</span> </li></Link>
                   <Link to='customers/'> <li className={sidebarLinkStyles}><FiUser size={25} /> <span className=' md:flex hidden'>Customers</span></li></Link>
-                  <li className={sidebarLinkStyles}><FiDollarSign size={25} /><span className=' md:flex hidden'>Payments</span></li>
+                  <Link to='payment/' > <li className={sidebarLinkStyles}><FiDollarSign size={25} /><span className=' md:flex hidden'>Payments</span></li></Link>
+                 
                   <li className={sidebarLinkStyles}><FiAlertOctagon size={25}/><span className=' md:flex hidden'>Reports</span></li>
                   <li className={sidebarLinkStyles}><FiSettings size={25} /><span className=' md:flex hidden'>Settings</span></li>
                  

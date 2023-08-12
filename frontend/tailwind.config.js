@@ -16,6 +16,7 @@ export default {
         charts: true,
     }),
     // ... other plugins
+  
   ]
 }
 
