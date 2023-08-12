@@ -35,6 +35,7 @@ class Room(models.Model):
     bed_capacity = models.IntegerField()
     air_condition = models.CharField(max_length=100, choices=AIR_CONDITION)
     rent = models.IntegerField()
+    description = models.TextField(blank=True, null=True)
     status = models.CharField(max_length=250, default='open')
 
     def __str__(self):

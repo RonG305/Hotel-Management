@@ -36,6 +36,24 @@ const Customers = () => {
     setCurrentPage(newPage);
   };
 
+  const handleDelete = async (customerId) => {
+    try {
+      const response = await fetch(`http://localhost:8000/api/booking/${customerId}`, {
+        method: 'DELETE'
+      })
+
+      if (response.ok) {
+        fetchCustomers()
+      }
+
+      else {
+        console.log('Failed to delete customer')
+      }
+    } catch (error) {
+      console.log('An error occured while deleting customer', error)
+    }
+  }
+
 
   return (
       <div className="overflow-x-auto ">
@@ -72,10 +90,10 @@ const Customers = () => {
                           <td className="px-6 py-6 ">{ customer.checkout}</td>
                           <th className="px-6 py-6 "><span className={`px-3 py-1 font-light text-white ${customer.status=='inside' ? 'bg-green-300' : 'bg-red-500'} rounded-md`}>{customer.status}</span> </th>
                        <td className="px-6 py-6 ">
-                       <tr className='border '>
+                       <tr>
                                <td className='px-2'>< FiEdit size={18}/></td>
                                <td className='px-2'>< FiEye size={18}/></td>
-                               <td className='px-2'><RiDeleteBin6Line size={18}/></td>
+                               <td onClick={() => handleDelete(customer.id)} className='px-2 hover:cursor-pointer text-red-500'><RiDeleteBin6Line size={18}/></td>
                            </tr>
                        </td>
                    </tr>

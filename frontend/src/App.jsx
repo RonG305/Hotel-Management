@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Dashboard from './pages/Dashboard'
 import Payment from './components/Payment'
 import BookingForm from './components/BookingForm'
+import RoomDetail from './components/RoomDetail'
 
 function App() {
   
@@ -23,6 +24,7 @@ function App() {
           <Route path='/' element={<Dashboard />} />
           <Route path='bookings/' element={<Booking />} />
           <Route path='rooms/' element={<Room />} />
+          <Route path='rooms/:id/' element={<RoomDetail />} />  
           <Route path='customers/' element={<Customers />} />
           <Route path='payment/' element={<Payment />} />  
           <Route path='bookings/addBooking/' element={<BookingForm />} />  

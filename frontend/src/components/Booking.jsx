@@ -37,6 +37,26 @@ const Booking = () => {
     const handlePageChange = (newPage) => {
       setCurrentPage(newPage);
     };
+  
+  
+  const handleDelete = async (bookingId) => {
+    try {
+      const response = await fetch(`http://localhost:8000/api/booking/${bookingId}`, {
+        method: 'DELETE'
+      })
+  
+      if (response.ok) {
+        fetchBookings()
+      }
+      else {
+        console.log('failed to delete booking')
+      }
+    } catch (error) {
+      console.log('An error occured while deleting booking', error)
+    }
+    
+
+  }
 
   
 
@@ -88,7 +108,7 @@ const Booking = () => {
                     <tr>
                             <td className='px-2'>< FiEdit size={18}/></td>
                             <td className='px-2'>< FiEye size={18}/></td>
-                            <td className='px-2'><RiDeleteBin6Line size={18}/></td>
+                            <td onClick={() => handleDelete(booking.id)} className='px-2 text-red-500 hover:cursor-pointer'><RiDeleteBin6Line size={18}/></td>
                     </tr>
                   </td>
               </tr>

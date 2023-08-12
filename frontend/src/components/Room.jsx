@@ -1,6 +1,8 @@
 import { FiEdit, FiEye, FiSettings } from 'react-icons/fi'
 import { RiDeleteBin6Line } from 'react-icons/ri'
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+
 
 const itemsPerPage = 10
 
@@ -35,6 +37,26 @@ const Room = () => {
         const handlePageChange = (newPage) => {
           setCurrentPage(newPage);
         };
+  
+  const handleDelete = async (roomId) => {
+    try {
+      const response = await fetch(`http://localhost:8000/api/rooms/${roomId}`, {
+              method: 'DELETE'
+      })
+      
+      if (response.ok) {
+        fetchRooms()
+      }
+
+      else {
+        console.log('failed to delete room')
+      }
+    } catch (error) {
+        console.log('an error ocurred while deleting room', error)
+      }
+  }
+  
+
     
   return (
       <div>
@@ -53,7 +75,7 @@ const Room = () => {
                   <tr>
                   <th className='px-6 py-6 '>Room Number</th>    
                   <th className="px-6 py-6 ">Room Type</th>
-                  <th className="px-6 py-6 ">Account Number</th>
+                  <th className="px-6 py-6 ">Air condition</th>
                   <th className="px-6 py-6 ">Meal</th>
                   <th className="px-6 py-6 ">Bed Capacity</th>
                   <th className="px-6 py-6 ">Rent</th>
@@ -68,7 +90,7 @@ const Room = () => {
                         <tr key={index} className='duration-300 ease-in border'>
                         <td className="px-6 py-6 ">{room.room_number}</td>
                           <td className="px-6 py-6 ">{room.room_type}</td>
-                          <td className='px-6 py-6 text-green-400 '>ACC</td>
+                          <td className='px-6 py-6 text-green-400 '>{ room.air_condition}</td>
                           <td className='px-6 py-6'>{room.meal}</td>
                             <td className="px-6 py-6 ">{ room.bed_capacity}</td>
                           <td className="px-6 py-6 ">{room.rent} USD</td>
@@ -77,8 +99,8 @@ const Room = () => {
                           <td className="px-6 py-6 ">
                           <tr>
                                   <td className='px-2'>< FiEdit size={18}/></td>
-                                  <td className='px-2'>< FiEye size={18}/></td>
-                                  <td className='px-2'><RiDeleteBin6Line size={18}/></td>
+                                  <Link to={`${room.id}`} ><td className='px-2'>< FiEye size={18}/></td></Link> 
+                                  <td onClick={() => handleDelete(room.id)} className='px-2 hover:cursor-pointer text-red-600'><RiDeleteBin6Line size={18}/></td>
                               </tr>
                           </td>
                       </tr>
