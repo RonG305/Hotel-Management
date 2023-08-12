@@ -40,7 +40,7 @@ class Booking(models.Model):
     checkout = models.DateField()
     payment = models.CharField(max_length=200, choices=PAYMENT)
     status = models.CharField(max_length=100, choices=STATUS)
-    decription = models.TextField()
+    description = models.TextField()
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
