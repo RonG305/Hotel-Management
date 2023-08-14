@@ -106,7 +106,7 @@ const Booking = () => {
               <th className="px-6 py-6 "><span className={`px-3 py-1 font-light text-white ${booking.status=='inside' ? 'bg-green-300' : 'bg-red-500'} rounded-md`}>{booking.status}</span> </th>
                     <td className="px-6 py-6 ">
                     <tr>
-                            <td className='px-2'>< FiEdit size={18}/></td>
+                            <Link to={`${booking.id}`}><td className='px-2'>< FiEdit size={18}/></td></Link>
                             <Link to={`${booking.id}`}><td className='px-2'>< FiEye size={18}/></td></Link>
                             <td onClick={() => handleDelete(booking.id)} className='px-2 text-red-500 hover:cursor-pointer'><RiDeleteBin6Line size={18}/></td>
                     </tr>

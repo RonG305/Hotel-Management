@@ -58,7 +58,7 @@ const Payment = () => {
                   <th className="px-6 py-6 ">Email</th>
                   <th className="px-6 py-6 ">Currency setting</th>
                   <th className="px-6 py-6 ">status</th>
-                  <th className="px-6 py-6 ">Actions</th>
+                
               </tr>
               </thead>
 
@@ -72,11 +72,7 @@ const Payment = () => {
                           <td className="px-6 py-6 ">{ payment.currency_setting}</td>
                        <th className="px-6 py-6 "><span className="px-3 py-1 font-light text-white bg-green-300 rounded-lg">{payment.status}</span> </th>
                        <td className="px-6 py-6 ">
-                       <tr className='border '>
-                               <td className='px-2'>< FiEdit size={18}/></td>
-                               <td className='px-2'>< FiEye size={18}/></td>
-                               <td className='px-2'><RiDeleteBin6Line size={18}/></td>
-                           </tr>
+                       
                        </td>
                    </tr>
                   ))}

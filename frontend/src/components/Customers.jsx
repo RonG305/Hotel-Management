@@ -1,5 +1,3 @@
-import { FiSettings, FiEdit, FiEye, FiPlus } from 'react-icons/fi'
-import { RiDeleteBin6Line } from 'react-icons/ri'
 
 import { useState, useEffect } from 'react'
 
@@ -46,9 +44,7 @@ const Customers = () => {
                   <h2 className='text-2xl font-bold '>Customer List</h2>
                   <p>You have 368 customers</p>
                   </div>
-              <div className="flex items-center justify-center w-10 h-10 text-white bg-blue-500 rounded ">
-                  <FiPlus size={25}  />
-             </div>
+             
              
           </div>
           <table className="w-full mt-5 text-sm text-left text-gray-500 border rounded-md dark:text-gray-600">

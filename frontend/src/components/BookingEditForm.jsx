@@ -1,24 +1,8 @@
 import { useState, useEffect } from "react";
 
-const BookingForm = () => {
+const BookingEditForm = ({bookingId}) => {
 
     const [availableRooms, setAvailableRooms] = useState([]);
-
-    useEffect(() => {
-        const fetchAvailableRooms = async () => {
-            try {
-                const response = await fetch('http://localhost:8000/api/rooms/');
-                const data = await response.json();
-                setAvailableRooms(data.rooms);
-            } catch (error) {
-                console.log('An error occurred while fetching available rooms', error);
-            }
-        };
-
-        fetchAvailableRooms();
-    }, []);
-    
-    const formStyles = " w-full outline-none border border-gray-300 rounded-md mx-3 mb-6 md:w-1/4  placeholder:font-bold text-sm" 
 
     const [formData, setFormData] = useState({
         first_name: '',
@@ -36,6 +20,38 @@ const BookingForm = () => {
         description: '',
     });
 
+    useEffect(() => {
+        const fetchAvailableRooms = async () => {
+            try {
+                const response = await fetch('http://localhost:8000/api/rooms/');
+                const data = await response.json();
+                setAvailableRooms(data.rooms);
+            } catch (error) {
+                console.log('An error occurred while fetching available rooms', error);
+            }
+        };
+
+        fetchAvailableRooms();
+    }, []);
+
+
+    useEffect(() => {
+        const fetchBookingData = async () => {
+            try {
+                const response = await fetch(`http://localhost:8000/api/booking/${bookingId}/`);
+                const data = await response.json();
+                setFormData(data);
+            } catch (error) {
+                console.log('An error occurred while fetching booking data', error);
+            }
+        }
+        fetchBookingData()
+    }, [bookingId]);
+    
+    const formStyles = " w-full outline-none border border-gray-300 rounded-md mx-3 mb-6 md:w-1/4  placeholder:font-bold text-sm" 
+
+  
+
     const handleChange = (event) => {
         const { name, value } = event.target;
         setFormData({
@@ -49,8 +65,8 @@ const BookingForm = () => {
         event.preventDefault();
     
         try {
-          const response = await fetch( 'http://localhost:8000/api/booking/', {
-            method: 'POST',
+          const response = await fetch( `http://localhost:8000/api/booking/${bookingId}`, {
+            method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
             },
@@ -74,7 +90,7 @@ const BookingForm = () => {
   return (
       <div className="p-8 mx-4 my-6 border rounded-xl">
           <div>
-              <h2 className="mb-6 text-2xl font-extrabold text-gray-600 ">Add Booking</h2>
+              <h2 className="mb-6 text-2xl font-extrabold text-gray-600 ">Edit Booking</h2>
               <form action="" onSubmit={handleSubmit}>
                   
                   <input
@@ -217,7 +233,7 @@ const BookingForm = () => {
                       placeholder="description"
                   />
 
-                  <button className="px-10 py-2 bg-blue-400 rounded-md outline-none " type="submit">Submit</button>
+                  <button className="px-10 py-2 bg-blue-400 rounded-md outline-none " type="submit">update</button>
                   
               </form>
           </div>
@@ -225,6 +241,6 @@ const BookingForm = () => {
   )
 }
 
-export default BookingForm
+export default BookingEditForm
 
 
