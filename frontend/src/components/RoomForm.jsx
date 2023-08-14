@@ -1,6 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const RoomForm = () => {
+
+  const navigate = useNavigate()
+
   const formStyles =
     " md:w-1/3 outline-none rounded-md  border-gray-300 mx-3 my-4";
   const [formData, setFormData] = useState({
@@ -28,6 +32,8 @@ const RoomForm = () => {
 
       if (response.ok) {
         console.log("Successfully submitted data");
+        return navigate('../rooms', {replace:true})
+
       } else {
         console.log("Failed to create room");
       }

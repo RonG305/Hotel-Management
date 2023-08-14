@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
+
 
 const BookingForm = () => {
+
+    const navigate = useNavigate()
 
     const [availableRooms, setAvailableRooms] = useState([]);
 
@@ -59,7 +63,8 @@ const BookingForm = () => {
     
           if (response.ok) {
             // Handle successful submission
-            console.log('Booking created successfully');
+              console.log('Booking created successfully');
+              return navigate('../bookings/', {replace: true})
           
           } else {
             // Handle error
