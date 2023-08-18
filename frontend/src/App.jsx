@@ -12,23 +12,26 @@ import RoomDetail from './components/RoomDetail'
 import BookingDetail from './components/BookingDetail'
 import RoomForm from './components/RoomForm'
 import BookingEditForm from './components/BookingEditForm'
+import RoomEditForm from './components/RoomEditForm'
+import Dashboard from './pages/Dashboard'
 
 function App() {
   
 
   return (
-    <>
+    <div>
       <Router>
         <Sidebar />
         <Navbar />
-        <div className=' ml-24 md:ml-72 font-open-sans font-medium'>
+        <div className='ml-24 font-medium  md:ml-72 font-open-sans'>
         <Routes>
-        
+          <Route path='/' element={<Dashboard />} />
           <Route path='bookings/' element={<Booking />} />
-          <Route path='bookings/:id/' element={<BookingDetail />} />
-          <Route path='bookingsEdit/:id' element={<BookingEditForm />} />
+          <Route path='bookings/view/:id/' element={<BookingDetail />} />
+          <Route path='bookings/edit/:id' element={<BookingEditForm />} />
           <Route path='rooms/' element={<Room />} />
           <Route path='rooms/:id/' element={<RoomDetail />} />  
+          <Route path='rooms/edit/:id' element={<RoomEditForm />} />  
           <Route path='rooms/addRoom/' element={<RoomForm />} />
           <Route path='customers/' element={<Customers />} />
           <Route path='payment/' element={<Payment />} />  
@@ -42,7 +45,7 @@ function App() {
      
 
    
-    </>
+    </div>
   )
 }
 

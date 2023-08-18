@@ -5,8 +5,9 @@ const RoomForm = () => {
 
   const navigate = useNavigate()
 
-  const formStyles =
-    " md:w-1/3 outline-none rounded-md  border-gray-300 mx-3 my-4";
+  const formStyles = " md:w-1/3 outline-none rounded-md  border-gray-300 mx-3 my-4";
+
+  
   const [formData, setFormData] = useState({
     room_number: "",
     room_type: "",

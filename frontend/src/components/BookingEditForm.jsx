@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
-const BookingEditForm = ({bookingId}) => {
+const BookingEditForm = () => {
+
+    const params = useParams()
 
     const [availableRooms, setAvailableRooms] = useState([]);
 
@@ -38,15 +41,16 @@ const BookingEditForm = ({bookingId}) => {
     useEffect(() => {
         const fetchBookingData = async () => {
             try {
-                const response = await fetch(`http://localhost:8000/api/booking/${bookingId}/`);
+                const response = await fetch(`http://localhost:8000/api/booking/${params.id}/`);
                 const data = await response.json();
                 setFormData(data);
+                console.log(data)
             } catch (error) {
                 console.log('An error occurred while fetching booking data', error);
             }
         }
         fetchBookingData()
-    }, [bookingId]);
+    }, [params.id]);
     
     const formStyles = " w-full outline-none border border-gray-300 rounded-md mx-3 mb-6 md:w-1/4  placeholder:font-bold text-sm" 
 
@@ -65,10 +69,10 @@ const BookingEditForm = ({bookingId}) => {
         event.preventDefault();
     
         try {
-          const response = await fetch( `http://localhost:8000/api/booking/${bookingId}`, {
+          const response = await fetch( `http://localhost:8000/api/booking/${params.id}`, {
             method: 'PUT',
             headers: {
-              'Content-Type': 'application/json',
+                "Content-Type": "application/json",
             },
             body: JSON.stringify(formData),
           });
@@ -79,7 +83,7 @@ const BookingEditForm = ({bookingId}) => {
           
           } else {
             // Handle error
-            console.error('Error creating booking');
+            console.error('Error editing booking');
           }
         } catch (error) {
           // Handle error

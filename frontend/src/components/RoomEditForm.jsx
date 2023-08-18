@@ -1,204 +1,171 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const RoomEditForm = () => {
-    const formStyles = " w-full outline-none border border-gray-300 rounded-md mx-3 mb-6 md:w-1/4  placeholder:font-bold text-sm" 
 
-    const [formData, setFormData] = useState({
-        first_name: '',
-        last_name: '',
-        gender: '',
-        phone_number: '',
-        room_number: '',
-        room_type: '',
-        email_address: '',
-        address: '',
-        checkin: '',
-        checkout: '',
-        payment: '',
-        status: '',
-        description: '',
-    });
+    const navigate = useNavigate()
+    const params = useParams()
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setFormData((prevData) => ({
-          ...prevData,
-          [name]: value,
-        }));
-    };
+  const formStyles = " md:w-1/3 outline-none rounded-md  border-gray-300 mx-3 my-4";
+
+  
+  const [formData, setFormData] = useState({
+    room_number: "",
+    room_type: "",
+    meal: "",
+    bed_capacity: "",
+    air_condition: "",
+    rent: "",
+    description: "",
+    status: "",
+  });
     
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-    
+    const fetchRoom = async () => {
         try {
-          const response = await fetch( 'http://localhost:8000/api/booking/', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-          });
-    
-          if (response.ok) {
-            // Handle successful submission
-            console.log('Booking created successfully');
-            // Reset form data if needed
-            setFormData({
-                first_name: '',
-                last_name: '',
-                gender: '',
-                phone_number: '',
-                room_number: '',
-                room_type: '',
-                email_address: '',
-                address: '',
-                checkin: '',
-                checkout: '',
-                payment: '',
-                status: '',
-                description: '',
-            });
-          } else {
-            // Handle error
-            console.error('Error creating booking');
-          }
+            const response = await fetch(`http://localhost:8000/api/rooms/${params.id}`)
+            const data = await response.json()
+            setFormData(data)
+            console.log(data)
         } catch (error) {
-          // Handle error
-          console.error('Error creating booking', error);
-        }
-      };
-    
+            console.log('Failed to fetch room', error)
+      }
+  }
+  
+    useEffect(() => {
+        fetchRoom()
+    }, [params.id])
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await fetch(`http://localhost:8000/api/rooms/${params.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        console.log("Successfully submitted data");
+        return navigate('../rooms', {replace:true})
+
+      } else {
+        console.log("Failed to update room");
+      }
+    } catch (error) {
+      console.log("An error occured while submitting form data", error);
+    }
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
   return (
-      <div className="p-8 mx-4 my-6 border rounded-xl">
-          <div>
-              <h2 className="mb-6 text-2xl font-extrabold text-gray-600 ">Add Booking</h2>
-              <form action="" onSubmit={handleSubmit}>
-                  
-                  <input
-                      onChange={handleChange}
-                      className={formStyles}
-                      type="text"
-                      name="first_name"
-                      value={formData.first_name}
-                      placeholder="First Name"
-                  />
+    <div>
+      <div>
+        <h2>Update Room</h2>
+      </div>
 
-                  <input
-                      onChange={handleChange}
-                      className={formStyles}
-                      type="text"
-                      name="last_name"
-                      value={formData.last_name}
-                      placeholder="Last Name"
-                  />
+      <form action="" onSubmit={handleSubmit}>
+        <input
+          className={formStyles}
+          type="text"
+          placeholder="Room Number"
+          name="room_number"
+          value={formData.room_number}
+          onChange={handleInputChange}
+        />
 
-                  <input
-                      onChange={handleChange}
-                      className={formStyles}
-                      type="text" name="gender"
-                      value={formData.gender}
-                      placeholder="Gender"
-                  />
+        <input
+          className={formStyles}
+          type="number"
+          placeholder="Bed Capacity"
+          name="bed_capacity"
+          value={formData.bed_capacity}
+          onChange={handleInputChange}
+        />
 
-                  <input
-                      onChange={handleChange}
-                      className={formStyles}
-                      type="text"
-                      name="phone_number"
-                      value={formData.phone_number}
-                      placeholder="phone Number"
-                  />
+        <input
+          className={formStyles}
+          type="number"
+          placeholder="Rent"
+          name="rent"
+          value={formData.rent}
+          onChange={handleInputChange}
+        />
 
-                  <input
-                      onChange={handleChange}
-                      className={formStyles}
-                      type="text"
-                      name="room_number"
-                      value={formData.room_number}
-                      placeholder="Room Number"
-                  />
+        <input
+          className={formStyles}
+          type="text"
+          placeholder=" Description"
+          name="description"
+          value={formData.description}
+          onChange={handleInputChange}
+        />
 
-                  <input
-                      onChange={handleChange}
-                      className={formStyles}
-                      type="text"
-                      name="room_type"
-                      value={formData.room_type}
-                      placeholder="Room Type"
-                  />
+        <input
+          className={formStyles}
+          type="text"
+          placeholder="status"
+          name="status"
+          value={formData.status}
+          onChange={handleInputChange}
+        />
 
-                  <input
-                      onChange={handleChange}
-                      className={formStyles}
-                      type="email"
-                      name="email_address"
-                      value={formData.email_address}
-                      placeholder="Email Address"
-                  />
+        <select
+          className={formStyles}
+          name="room_type"
+          value={formData.room_type}
+          onChange={handleInputChange}
+        >
+          <option value="">Select Room Type</option>
+          <option value="delux">Delux</option>
+          <option value="super delux">Super Delux</option>
+          <option value="Single">Single</option>
+          <option value="Double">Double</option>
+        </select>
 
-                  <input
-                      onChange={handleChange}
-                      className={formStyles}
-                      type="text"
-                      name="address"
-                      value={formData.address}
-                      placeholder="Address"
-                  />
+        <select
+          className={formStyles}
+          name="air_condition"
+          value={formData.air_condition}
+          onChange={handleInputChange}
+        >
+          <option value="">Select Air Condition</option>
+          <option value="AC">AC</option>
+          <option value="No AC">No AC</option>
+        </select>
 
-                  <input
-                      onChange={handleChange}
-                      className={formStyles}
-                      type="date"
-                      name="checkin"
-                      value={formData.checkin}
-                      placeholder="checkin"
-                  />
+        <select
+          className={formStyles}
+          name="meal"
+          value={formData.meal}
+          onChange={handleInputChange}
+        >
+          <option value="">Select Meal </option>
+          <option value="breakfast">breakfast</option>
+          <option value="lunch">Lunch</option>
+          <option value="dinner">Dinner</option>
+          <option value="two">Two</option>
+          <option value="all">Option</option>
+        </select>
 
-                  <input
-                      onChange={handleChange}
-                      className={formStyles}
-                      type="date"
-                      name="checkout"
-                      value={formData.checkout}
-                      placeholder="checkout"
-                  />
-
-                  <input
-                      onChange={handleChange}
-                      className={formStyles}
-                      type="text"
-                      name="payment"
-                      value={formData.payment}
-                      placeholder="payment"
-                  />
-
-                  <input
-                      onChange={handleChange}
-                      className={formStyles}
-                      type="text"
-                      name="status"
-                      value={formData.status}
-                      placeholder="status"
-                  />
-
-                  <input
-                      onChange={handleChange}
-                      className={formStyles}
-                      type="text"
-                      name="description"
-                      value={formData.description}
-                      placeholder="description"
-                  />
-
-                  <button className="px-10 py-2 bg-blue-400 rounded-md outline-none " type="submit">Submit</button>
-                  
-              </form>
-          </div>
+        <button
+          className=" rounded-md bg-blue-500 text-bold px-4 py-2 text-white mt-5"
+          type="submit"
+        >
+          update Room
+        </button>
+      </form>
     </div>
-  )
-}
+  );
+};
 
-export default RoomEditForm
-
-
+export default RoomEditForm;

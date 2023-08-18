@@ -3,6 +3,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FiPlus } from "react-icons/fi";
+import Graph from "./Graph";
 
 const itemsPerPage = 10;
 
@@ -114,26 +115,16 @@ const Room = () => {
 
                 <td className="px-6 py-6 ">
                   <tr>
-                    <td className="px-2">
-                      <FiEdit size={18} />
-                    </td>
-                    <Link to={`${room.id}`}>
-                      <td className="px-2">
-                        <FiEye size={18} />
-                      </td>
-                    </Link>
-                    <td
-                      onClick={() => handleDelete(room.id)}
-                      className="px-2 hover:cursor-pointer text-red-600"
-                    >
-                      <RiDeleteBin6Line size={18} />
-                    </td>
+                  <Link to={`edit/${room.id}`}><td className='px-2'>< FiEdit size={18}/></td></Link>
+                            <Link to={`${room.id}`}><td className='px-2'>< FiEye size={18}/></td></Link>
+                            <td onClick={() => handleDelete(room.id)} className='px-2 text-red-500 hover:cursor-pointer'><RiDeleteBin6Line size={18}/></td>
                   </tr>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+     
 
         {/* Pagination controls */}
         <div className="flex justify-center my-5">
