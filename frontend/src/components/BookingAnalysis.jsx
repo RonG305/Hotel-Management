@@ -13,8 +13,8 @@ const BookingAnalysis = () => {
     return (
         <div  className='border rounded-md p-5 text-center font-poppins' >
             <h3 className=' my-4'>Booking Analysis</h3>
-            <div className=' flex'>
-                <p>Bookings</p>
+            <div>
+                <p className=' text-orange-500'>Bookings</p>
                     <ResponsiveContainer width="100%" aspect={3} >
                     <PieChart width={800} height={800}>
                     <Pie
@@ -26,11 +26,12 @@ const BookingAnalysis = () => {
                         cy="50%"
                         outerRadius={80}
                         fill="#8884d9"
-                        label
+                        
+                        label='labels'
                     />
                     </PieChart>
                 </ResponsiveContainer>
-                <p>Total Rooms</p>
+                <p className=' text-purple-500'>Total Rooms</p>
             </div>
             
             
