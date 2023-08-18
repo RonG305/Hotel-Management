@@ -12,7 +12,7 @@ from .serializers import BookingSerializer, PaymentMethodSerializer
 
 class BookingList(APIView):
     def get(self, request):
-        booking = Booking.objects.all()
+        booking = Booking.objects.all().order_by('-created_at')
         booking_count = booking.count()
         serializer = BookingSerializer(booking, many=True)
 

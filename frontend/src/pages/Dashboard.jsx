@@ -1,4 +1,6 @@
+import BookingAnalysis from "../components/BookingAnalysis"
 import Graph from "../components/Graph"
+import RecentBookings from "../components/RecentBookings"
 import TotalBookings from "../components/TotalBookings"
 import TotalCustomers from "../components/TotalCustomers"
 import TotalRooms from "../components/TotalRooms"
@@ -17,7 +19,19 @@ const Dashboard = () => {
               <TotalRooms />
               <TotalCustomers />
           </div>
-          <Graph />
+
+
+          <div className=" md:flex gap-4">
+          <div className=" md:w-7/12 border rounded-md p-4 bg-slate-100">
+            <Graph />
+              </div>    
+              <div className=" md:w-5/12">
+                  <BookingAnalysis />
+              </div>
+          </div>
+         
+          
+            <RecentBookings />
     </div>
   )
 }

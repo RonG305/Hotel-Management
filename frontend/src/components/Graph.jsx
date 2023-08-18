@@ -47,12 +47,12 @@ const data = [
 
 const Graph = () => {
   return (
-      <>
+      <div   className='border rounded-md p-5'>
           <h1>Graphical Analysis</h1>
-    <ResponsiveContainer width="80%" aspect={3}  className='bg-blue-300 rounded-md p-5'>
+    <ResponsiveContainer width="100%" aspect={3}>
   
     <LineChart
-      width={500}
+      width={300}
       height={300}
       data={data}
       margin={{
@@ -71,7 +71,7 @@ const Graph = () => {
       <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
     </LineChart>
     </ResponsiveContainer>
-    </>
+    </div>
     
   )
 }

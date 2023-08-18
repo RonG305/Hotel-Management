@@ -41,6 +41,7 @@ class Booking(models.Model):
     payment = models.CharField(max_length=200, choices=PAYMENT)
     status = models.CharField(max_length=100, choices=STATUS)
     description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'

@@ -19,12 +19,12 @@ const TotalRooms = () => {
         getTotalRooms()
     })
   return (
-      <div className="h-64 p-2 border rounded-md md:w-1/3 relative leading-10 font-light bg-slate-100">
+      <div className="h-64 p-2 border rounded-md md:w-1/3 relative leading-10 text-white bg-purple-700">
            <div>
-              <h3 className="font-bold text-gray-500 ">Total Rooms</h3>
+              <h3 className="font-bold text-xl md:text-2xl ">Total Rooms</h3>
               <div>
                   <p>Total Rooms in the hotel</p>
-                  <p className="pt-4 text-2xl font-poppins font-bold ">{totalRooms}</p>
+                  <p className="pt-4 text-2xl md:text-4xl font-poppins font-extrabold ">{totalRooms}</p>
               </div>
           </div>
           <div className=' absolute top-2 right-2 bg-red-500 text-bold text-white px-4 py-1 rounded-md'>
