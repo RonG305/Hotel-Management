@@ -70,7 +70,7 @@ const Booking = () => {
               <h2 className='text-2xl font-bold '>Booking List</h2>
               <p>You have {bookingCount} rooms booked</p>
             </div>
-            <Link to='addBooking/' className="flex items-center justify-center w-10 h-10 text-white bg-blue-500 rounded ">
+            <Link to='addBooking/' className="flex items-center justify-center w-10 h-10 text-white bg-purple-700 rounded ">
                   <FiPlus size={25}  />
              </Link>
              
@@ -106,7 +106,7 @@ const Booking = () => {
                     <td className="px-6 py-6 ">{booking.checkin }</td>
                     <td className="px-6 py-6 ">{ booking.checkout}</td>
                     <td className="px-6 py-6"><span className={`${booking.payment === 'paid'? 'text-green-400' : 'text-orange-400'}`}>{booking.payment}</span></td>
-              <th className="px-6 py-6 "><span className={`px-3 py-1 font-light text-white ${booking.status=='inside' ? 'bg-green-300' : 'bg-red-500'} rounded-md`}>{booking.status}</span> </th>
+              <th className="px-6 py-6 font-poppins font-bold "><span className={`px-3 py-1 font-light text-white ${booking.status=='inside' ? 'bg-green-300' : 'bg-red-500'} rounded-md`}>{booking.status}</span> </th>
                     <td className="px-6 py-6 ">
                     <tr>
                             <Link to={`edit/${booking.id}`}><td className='px-2'>< FiEdit size={18}/></td></Link>

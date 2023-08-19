@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 const Sidebar = () => {
     const sidebarLinkStyles = 'flex gap-3 hover:bg-blue-700 cursor-pointer rounded-sm px-4 py-2 ease-in duration-300' 
   return (
-      <div className=" md:w-72 h-[100vh] bg-blue-950  px-5 fixed ">
+      <div className=" md:w-72 h-[100vh] bg-purple-700  px-5 fixed ">
           <div className="items-center gap-3 py-5  md:flex">
               <img className='w-16  md:w-20' src="../../public/logo.png" alt="" />
               
@@ -17,7 +17,7 @@ const Sidebar = () => {
           <div className='my-2'>
               <hr />
           </div>
-          <div className="text-blue-300 ">
+          <div className="text-white ">
               <ul className="flex flex-col gap-5 font-bold ">
                   <Link to='/'><li className={sidebarLinkStyles} ><RxDashboard size={25} /><span className='hidden  md:flex'>Dashboard</span></li></Link>
                   <Link to='bookings/'><li className={sidebarLinkStyles}><FiBookOpen size={25} /><span className='hidden  md:flex'>Bookings</span> </li></Link>

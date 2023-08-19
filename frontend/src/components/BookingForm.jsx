@@ -222,7 +222,7 @@ const BookingForm = () => {
                       placeholder="description"
                   />
 
-                  <button className="px-10 py-2 bg-blue-400 rounded-md outline-none " type="submit">Submit</button>
+                  <button className="px-10 py-2 bg-purple-700 text-white font-extrabold font-poppins rounded-md outline-none " type="submit">Submit</button>
                   
               </form>
           </div>

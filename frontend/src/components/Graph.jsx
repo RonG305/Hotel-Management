@@ -48,7 +48,7 @@ const data = [
 const Graph = () => {
   return (
       <div   className='border rounded-md p-5'>
-          <h1>Graphical Analysis</h1>
+          <h1 className=' my-4 font-poppins font-extrabold text-xl'>Daily Revenue Analysis in Kshs</h1>
         <ResponsiveContainer width="100%" aspect={3}>
         <AreaChart
           width={500}

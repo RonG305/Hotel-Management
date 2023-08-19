@@ -1,20 +1,59 @@
-import React, { PureComponent } from 'react';
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
 
-const data = [
-  { name: 'Group A', value: 400 },
-  { name: 'Group B', value: 300 },
-  
-];
+import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
+import { useState, useEffect } from 'react';
+
+
+
 
 const BookingAnalysis = () => {
+  
+
+    const [roomCount, setRoomCount] = useState(0);
+    const [totalBooking, setTotalBooking] = useState(0)
+  
+    const fetchRooms = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/api/rooms/");
+        const data = await response.json();
+        setRoomCount(data.room_count);
+        console.log(data.rooms);
+      } catch (error) {
+        console.log("an error occured while fetching data", error);
+      }
+    };
+  
+    useEffect(() => {
+      fetchRooms();
+    }, []);
+
+    const getTotalBookings = async() => {
+        try {
+          const response = await fetch('http://localhost:8000/api/booking/')
+          const data = await response.json()
+          setTotalBooking(data.booking_count)
+          console.log(data)
+        } catch (error) {
+          console.log('Failed to get booking count', error)
+        }
+      }
+    
+      useEffect(() => {
+        getTotalBookings()
+      })
+
+
+const data = [
+    { name: 'Group A', value: roomCount },
+    { name: 'Group B', value: totalBooking },
+    
+  ];
  
 
     return (
         <div  className='border rounded-md p-5 text-center font-poppins' >
             <h3 className=' my-4'>Booking Analysis</h3>
-            <div>
-                <p className=' text-orange-500'>Bookings</p>
+            <div className=' relative'>
+            <p className=' text-purple-500 md:absolute top-[40%] left-9'>Total Rooms ({roomCount})</p>
                     <ResponsiveContainer width="100%" aspect={3} >
                     <PieChart width={800} height={800}>
                     <Pie
@@ -25,13 +64,14 @@ const BookingAnalysis = () => {
                         cx="50%"
                         cy="50%"
                         outerRadius={80}
-                        fill="#8884d9"
+                        fill='#0088FE' 
                         
                         label='labels'
                     />
                     </PieChart>
                 </ResponsiveContainer>
-                <p className=' text-purple-500'>Total Rooms</p>
+                
+                <p className=' text-orange-500 md:absolute top-[50%] right-9'>Total bookings ({totalBooking})</p>
             </div>
             
             

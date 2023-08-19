@@ -73,7 +73,7 @@ const Room = () => {
 
           <Link
             to="addRoom/"
-            className="flex items-center justify-center w-10 h-10 text-white bg-blue-500 rounded "
+            className="flex items-center justify-center w-10 h-10 text-white bg-purple-700 rounded "
           >
             <FiPlus size={25} />
           </Link>
@@ -127,9 +127,9 @@ const Room = () => {
      
 
         {/* Pagination controls */}
-        <div className="flex justify-center my-5">
+        <div className="flex justify-center my-5 font-poppins">
           <button
-            className="p-2 bg-blue-300 border rounded-lg cursor-pointer "
+            className="p-2 bg-purple-700 border rounded-md text-white  cursor-pointer "
             disabled={currentPage === 1}
             onClick={() => handlePageChange(currentPage - 1)}
           >
@@ -140,7 +140,7 @@ const Room = () => {
             Page {currentPage} of {Math.ceil(rooms.length / itemsPerPage)}
           </span>
           <button
-            className="p-2 bg-blue-300 border rounded-lg cursor-pointer "
+            className="p-2 bg-purple-700 border rounded-md text-white cursor-pointer "
             disabled={currentPage === Math.ceil(rooms.length / itemsPerPage)}
             onClick={() => handlePageChange(currentPage + 1)}
           >

@@ -45,9 +45,7 @@ const Payment = () => {
                   <h2 className='text-2xl font-bold '>Payment List</h2>
                   <p>You have 3 Payment methods</p>
                   </div>
-              <div className="flex items-center justify-center w-10 h-10 text-white bg-blue-500 rounded ">
-                  <FiPlus size={25}  />
-             </div>
+             
              
           </div>
           <table className="w-full mt-5 text-sm text-left text-gray-500 border rounded-md dark:text-gray-600">
@@ -84,7 +82,7 @@ const Payment = () => {
       {/* Pagination controls */}
       <div className="flex justify-center my-5">
           <button
-            className=' border rounded-lg p-2 cursor-pointer bg-blue-300'
+            className=' border rounded-md text-white p-2 cursor-pointer bg-purple-700'
             disabled={currentPage === 1}
             onClick={() => handlePageChange(currentPage - 1)}
           >
@@ -94,7 +92,7 @@ const Payment = () => {
             Page {currentPage} of {Math.ceil(payments.length / itemsPerPage)}
           </span>
           <button
-            className=' border rounded-lg p-2 cursor-pointer bg-blue-300'
+            className=' border rounded-md text-white p-2 cursor-pointer bg-purple-700'
             disabled={currentPage === Math.ceil(payments.length / itemsPerPage)}
             onClick={() => handlePageChange(currentPage + 1)}
           >

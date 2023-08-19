@@ -8,7 +8,7 @@ import TotalRooms from "../components/TotalRooms"
 
 const Dashboard = () => {
   return (
-      <div>
+      <div className=" my-4">
           <div className=" my-4 mx-5">
               <h1 className=" text-gray-600 font-extrabold md:text-2xl py-4 ">HOTEL MANAGEMENT SYSTEM DASHBOARD</h1>
               <p>Welcome to HMS Dashboard</p>
