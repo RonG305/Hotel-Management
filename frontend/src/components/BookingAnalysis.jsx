@@ -46,7 +46,9 @@ const data = [
     { name: 'Group A', value: roomCount },
     { name: 'Group B', value: totalBooking },
     
-  ];
+];
+  
+  const percentageBookings = totalBooking / roomCount * 100
  
 
     return (
@@ -72,6 +74,8 @@ const data = [
                 </ResponsiveContainer>
                 
                 <p className=' text-orange-500 md:absolute top-[50%] right-9'>Total bookings ({totalBooking})</p>
+                <p>Percentage Bookings</p>
+                <p className={`font-extrabold text-2xl md:4xl ${percentageBookings > 70 ? 'text-green-500' : 'text-orange-700'}`} >{percentageBookings.toFixed(3) } %</p>
             </div>
             
             

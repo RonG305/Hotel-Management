@@ -82,7 +82,7 @@ const Customers = () => {
       {/* Pagination controls */}
       <div className="flex justify-center mt-5">
           <button
-            className=' border rounded-lg p-2 cursor-pointer bg-blue-300'
+            className=' border rounded-md text-white p-2 cursor-pointer bg-purple-700'
             disabled={currentPage === 1}
             onClick={() => handlePageChange(currentPage - 1)}
           >
@@ -92,7 +92,7 @@ const Customers = () => {
             Page {currentPage} of {Math.ceil(customers.length / itemsPerPage)}
           </span>
           <button
-            className=' border rounded-lg p-2 cursor-pointer bg-blue-300'
+            className=' border rounded-md text-white p-2 cursor-pointer bg-purple-700'
             disabled={currentPage === Math.ceil(customers.length / itemsPerPage)}
             onClick={() => handlePageChange(currentPage + 1)}
           >

@@ -16,7 +16,7 @@ const RoomForm = () => {
     air_condition: "",
     rent: "",
     description: "",
-    status: "",
+    // status: "",
   });
 
   const handleSubmit = async (event) => {
@@ -52,7 +52,7 @@ const RoomForm = () => {
   };
   return (
     <div>
-      <div>
+      <div className=" border rounded-md px-4 py-3 mx-5 my-6 font-extrabold text-2xl">
         <h2>Create New Room</h2>
       </div>
 
@@ -93,14 +93,14 @@ const RoomForm = () => {
           onChange={handleInputChange}
         />
 
-        <input
+        {/* <input
           className={formStyles}
           type="text"
           placeholder="status"
           name="status"
           value={formData.status}
           onChange={handleInputChange}
-        />
+        /> */}
 
         <select
           className={formStyles}

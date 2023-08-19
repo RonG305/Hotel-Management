@@ -130,7 +130,7 @@ const BookingForm = () => {
                         <option value="">Select a Room</option>
                         {availableRooms.map((room) => (
                             <option key={room.id} value={room.id}>
-                                {room.room_number}
+                                {room.status === 'open' && room.room_number}
                             </option>
                         ))}
                     </select>
@@ -203,7 +203,7 @@ const BookingForm = () => {
                   <select
                     className={formStyles}
                     name="status"
-                    value={formData.status}
+                    value={formData.status }
                     onChange={handleChange}
                         >
                     <option value="">Select Status</option>
