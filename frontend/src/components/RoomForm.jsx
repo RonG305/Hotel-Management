@@ -153,10 +153,4 @@ const RoomForm = () => {
 
 export default RoomForm;
 
-// MEAL = [
-//     ('breakfast', 'breakfast'),
-//     ('lunch', 'lunch'),
-//     ('dinner', 'dinner'),
-//     ('two', 'two'),
-//     ('all', 'all')
-// ]
+
