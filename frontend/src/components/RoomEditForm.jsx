@@ -18,7 +18,7 @@ const RoomEditForm = () => {
     air_condition: "",
     rent: "",
     description: "",
-    status: "",
+    // status: "",
   });
     
     const fetchRoom = async () => {
@@ -69,7 +69,7 @@ const RoomEditForm = () => {
   };
   return (
     <div>
-      <div>
+       <div className=" border rounded-md px-4 py-3 mx-5 my-6 font-extrabold text-2xl">
         <h2>Update Room</h2>
       </div>
 
@@ -110,14 +110,14 @@ const RoomEditForm = () => {
           onChange={handleInputChange}
         />
 
-        <input
+        {/* <input
           className={formStyles}
           type="text"
           placeholder="status"
           name="status"
           value={formData.status}
           onChange={handleInputChange}
-        />
+        /> */}
 
         <select
           className={formStyles}

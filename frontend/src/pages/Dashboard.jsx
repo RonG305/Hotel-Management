@@ -1,3 +1,4 @@
+import AvailableRooms from "../components/AvailableRooms"
 import BookingAnalysis from "../components/BookingAnalysis"
 import Graph from "../components/Graph"
 import RecentBookings from "../components/RecentBookings"
@@ -8,21 +9,22 @@ import TotalRooms from "../components/TotalRooms"
 
 const Dashboard = () => {
   return (
-      <div className=" my-4">
-          <div className=" my-4 mx-5">
-              <h1 className=" text-gray-600 font-extrabold md:text-2xl py-4 ">HOTEL MANAGEMENT SYSTEM DASHBOARD</h1>
+      <div className="my-4 ">
+          <div className="mx-5 my-4 ">
+              <h1 className="py-4 font-extrabold text-gray-600  md:text-2xl">HOTEL MANAGEMENT SYSTEM DASHBOARD</h1>
               <p>Welcome to HMS Dashboard</p>
           </div>
          
-          <div className=" md:flex mx-3 gap-3 text-gray-700 my-4">
+          <div className="gap-3 mx-3 my-4 text-gray-700  md:flex">
               <TotalBookings />
               <TotalRooms />
+              <AvailableRooms />
               <TotalCustomers />
           </div>
 
 
-          <div className=" md:flex gap-4">
-          <div className=" md:w-7/12 border rounded-md p-4 bg-slate-100">
+          <div className="gap-4  md:flex">
+          <div className="p-4 border rounded-md  md:w-7/12 bg-slate-100">
             <Graph />
               </div>    
               <div className=" md:w-5/12">

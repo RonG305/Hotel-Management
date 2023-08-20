@@ -14,7 +14,7 @@ from django.http import Http404
 
 class RoomList(APIView):
     def get(self, request):
-        rooms = Room.objects.all()
+        rooms = Room.objects.all().order_by('-created_at')
         room_count = rooms.count()
         serializer = RoomSerializer(rooms, many=True)
 

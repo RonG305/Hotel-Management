@@ -19,16 +19,16 @@ const TotalCustomers = () => {
         getTotalCustomers()
     })
   return (
-      <div className="h-64 p-2 border rounded-md md:w-1/3 relative leading-10 bg-blue-500 text-white">
+      <div className="relative h-64 p-2 leading-10 text-white bg-blue-500 border rounded-md md:w-1/4">
            <div >
-              <h3 className="font-bold text-xl md:text-2xl ">Customers</h3>
+              <h3 className="text-xl font-bold md:text-2xl ">Customers</h3>
               <div>
                   <p>Total customers</p>
-                  <p className="pt-4 text-2xl md:text-4xl font-poppins font-extrabold ">{totalCustomers}</p>
+                  <p className="pt-4 text-2xl font-extrabold md:text-4xl font-poppins ">{totalCustomers}</p>
               </div>
           </div>
-          <div className=' absolute top-2 right-2 bg-green-300 text-bold text-white px-4 py-1 rounded-md'>
-        <BsGraphUpArrow size={25} className=" " />
+          <div className='absolute px-4 py-1 text-white bg-green-300 rounded-md  top-2 right-2 text-bold'>
+        <BsGraphUpArrow size={25} className="" />
       </div>
     </div>
   )

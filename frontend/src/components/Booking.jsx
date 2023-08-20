@@ -99,7 +99,12 @@ const Booking = () => {
                   
                 <tr key={index} className='border '>
                     <td className="px-6 py-6 ">{ booking.id}</td>
-                    <td className="px-6 py-6 ">{booking.first_name} {booking.last_name}</td>
+                    <td className="px-6 py-6 ">
+                      <tr className=' flex flex-col'>
+                        <td>{booking.first_name} {booking.last_name}</td>
+                        <td className=' font-light'>{booking.email_address}</td>
+                      </tr>
+                    </td>
                     <td className="px-6 py-6 ">{ booking.room_number}</td>
                     <td className='px-6 py-6'>{ booking.room_type}</td>
                     <td className="px-6 py-6 ">{ booking.phone_number}</td> 
@@ -124,7 +129,7 @@ const Booking = () => {
         {/* Pagination controls */}
         <div className="flex justify-center my-8">
           <button
-            className=' border rounded-lg p-2 cursor-pointer bg-blue-300'
+            className=' border rounded-md text-white p-2 cursor-pointer bg-purple-700'
             disabled={currentPage === 1}
             onClick={() => handlePageChange(currentPage - 1)}
           >
@@ -134,7 +139,7 @@ const Booking = () => {
             Page {currentPage} of {Math.ceil(bookings.length / itemsPerPage)}
           </span>
           <button
-            className=' border rounded-lg p-2 cursor-pointer bg-blue-300'
+            className=' border rounded-md text-white p-2 cursor-pointer bg-purple-700'
             disabled={currentPage === Math.ceil(bookings.length / itemsPerPage)}
             onClick={() => handlePageChange(currentPage + 1)}
           >

@@ -52,7 +52,7 @@ const RoomForm = () => {
   };
   return (
     <div>
-      <div className=" border rounded-md px-4 py-3 mx-5 my-6 font-extrabold text-2xl">
+      <div className="px-4 py-3 mx-5 my-6 text-2xl font-extrabold border rounded-md ">
         <h2>Create New Room</h2>
       </div>
 
@@ -141,7 +141,7 @@ const RoomForm = () => {
         </select>
 
         <button
-          className=" rounded-md bg-blue-500 text-bold px-4 py-2 text-white mt-5"
+          className="px-4 py-2 mt-5 text-white bg-blue-500 rounded-md animate-pulse text-bold"
           type="submit"
         >
           Create Room
