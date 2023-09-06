@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const BookingEditForm = () => {
 
     const params = useParams()
+    const navigate = useNavigate()
 
     const [availableRooms, setAvailableRooms] = useState([]);
 
@@ -65,29 +67,32 @@ const BookingEditForm = () => {
     };
     
 
+   
     const handleSubmit = async (event) => {
         event.preventDefault();
     
         try {
-          const response = await fetch( `http://localhost:8000/api/booking/${params.id}`, {
+          const response = await fetch( `http://localhost:8000/api/booking/${params.id}/`, {
             method: 'PUT',
             headers: {
-                "Content-Type": "application/json",
+              'Content-Type': 'application/json',
             },
             body: JSON.stringify(formData),
           });
     
           if (response.ok) {
             // Handle successful submission
-            console.log('Booking created successfully');
+              console.log('Booking updated successfully');
+              return navigate('../bookings/', {replace: true})
+              
           
           } else {
             // Handle error
-            console.error('Error editing booking');
+            console.error('Error updating booking');
           }
         } catch (error) {
           // Handle error
-          console.error('Error creating booking', error);
+          console.error('Error updating booking', error);
         }
       };
     

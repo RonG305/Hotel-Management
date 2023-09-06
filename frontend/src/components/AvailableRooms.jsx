@@ -45,7 +45,7 @@ const AvailableRooms = () => {
        <h3 className="text-xl font-bold md:text-2xl ">Available Rooms</h3>
        <div>
            <p>Available Rooms in the hotel</p>
-           <p className="pt-4 text-2xl font-extrabold md:text-4xl font-poppins ">{availableRooms}</p>
+           <p className="pt-4 text-2xl font-extrabold md:text-4xl ">{availableRooms}</p>
        </div>
    </div>
    <div className='absolute px-4 py-1 text-white bg-red-500 rounded-md top-2 right-2 text-bold'>

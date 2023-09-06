@@ -20,6 +20,7 @@ class BookingList(APIView):
             'bookings': serializer.data,
             'booking_count': booking_count
         }
+
         return Response(response_data, status=status.HTTP_200_OK)
 
     def post(self, request):
@@ -104,3 +105,19 @@ class PaymentDetail(APIView):
         payment = self.get_object(pk)
         payment.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class StkPushView(APIView):
+    def post(self, request, *args, **kwargs):
+        cl = MpesaClient()
+        # Get the phone number from the request data
+        phone_number = request.data.get('phone_number')
+        # Get the amount from the request data
+        amount = request.data.get('amount')
+        account_reference = 'reference'
+        transaction_desc = 'Description'
+        callback_url = 'https://api.darajambili.com/express-payment'
+
+        response = cl.stk_push(
+            phone_number, amount, account_reference, transaction_desc, callback_url)
+        return HttpResponse(response)

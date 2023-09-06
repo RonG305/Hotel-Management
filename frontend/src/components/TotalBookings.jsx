@@ -27,7 +27,7 @@ const TotalBookings = () => {
               <div className="flex">
                   <div className="w-1/2 ">
                     <p>In the last 30 days Bookings</p>
-                    <p className="pt-4 text-2xl font-extrabold md:text-4xl font-poppins ">{totalBooking}</p>
+                    <p className="pt-4 text-2xl font-extrabold md:text-4xl ">{totalBooking}</p>
                   </div>    
       </div>
       <div className='absolute px-4 py-1 text-white bg-green-300 rounded-md  top-2 right-2 text-bold'>

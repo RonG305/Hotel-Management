@@ -19,29 +19,56 @@ const RoomForm = () => {
     // status: "",
   });
 
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   try {
+  //     const response = await fetch("http://localhost:8000/api/rooms/", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+
+  //       body: JSON.stringify(formData),
+  //     });
+
+  //     if (response.ok) {
+  //       console.log("Successfully submitted data");
+  //       return navigate('../rooms', {replace:true})
+
+  //     } else {
+  //       console.log("Failed to create room");
+  //     }
+  //   } catch (error) {
+  //     console.log("An error occured while submitting form data", error);
+  //   }
+  // };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch("http://localhost:8000/api/rooms/", {
-        method: "POST",
+      const repsonse = await fetch("http://localhost:8000/api/rooms/", {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
+        body: JSON.stringify(formData)
+      })
 
-        body: JSON.stringify(formData),
-      });
 
-      if (response.ok) {
-        console.log("Successfully submitted data");
+      if (repsonse.ok) {
+
+        console.log('form submitted succesifully')
         return navigate('../rooms', {replace:true})
-
       } else {
-        console.log("Failed to create room");
+        console.log('Failed to submit the room')
       }
+
     } catch (error) {
-      console.log("An error occured while submitting form data", error);
+      
+      console.log('An error occured while submitting data ', error)
+
     }
-  };
+  }
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;

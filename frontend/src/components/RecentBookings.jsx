@@ -22,7 +22,7 @@ const RecentBookings = () => {
       }, [])
   return (
       <div>
-          <div className=" font-poppins font-bold mx-4">
+          <div className="mx-4 font-bold  font-poppins">
               <p>Recent Customer Bookings</p>
           </div>
           <table className="w-full mt-5 text-sm text-left text-gray-500 border rounded-md dark:text-gray-400 ">
@@ -55,7 +55,7 @@ const RecentBookings = () => {
                     <td className="px-6 py-6 ">{booking.checkin }</td>
                     <td className="px-6 py-6 ">{ booking.checkout}</td>
                     <td className="px-6 py-6"><span className={`${booking.payment === 'paid'? 'text-green-400' : 'text-orange-400'}`}>{booking.payment}</span></td>
-              <th className="px-6 py-6 "><span className={`px-3 py-1 font-light text-white ${booking.status=='inside' ? 'bg-green-300' : 'bg-red-500'} rounded-md`}>{booking.status}</span> </th>
+              <th className="px-6 py-6 "><span className={`px-3 py-1 font-light text-white ${booking.payment=='paid' ? 'bg-green-300' : 'bg-red-500'} rounded-md`}>{booking.payment == 'paid' ? 'checked' : 'not checked'}</span> </th>
                 
               </tr>
                   

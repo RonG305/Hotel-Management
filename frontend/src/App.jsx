@@ -16,14 +16,16 @@ import RoomEditForm from './components/RoomEditForm'
 import Dashboard from './pages/Dashboard'
 
 function App() {
+
+
   
 
   return (
     <div className=' font-poppins'>
       <Router>
-        <Sidebar />
+        <Sidebar/>
         <Navbar />
-        <div className='ml-24 font-medium  md:ml-72 font-open-sans'>
+        <div className='ml-32 font-medium font-open-sans'>
         <Routes>
           <Route path='/' element={<Dashboard />} />
           <Route path='bookings/' element={<Booking />} />
@@ -35,7 +37,8 @@ function App() {
           <Route path='rooms/addRoom/' element={<RoomForm />} />
           <Route path='customers/' element={<Customers />} />
           <Route path='payment/' element={<Payment />} />  
-          <Route path='bookings/addBooking/' element={<BookingForm />} />  
+          <Route path='bookings/addBooking/' element={<BookingForm />} /> 
+            <Route path='rooms/addBooking/' element={<BookingForm />} /> 
           </Routes>
         </div>
       </Router>

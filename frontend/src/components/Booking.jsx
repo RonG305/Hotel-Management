@@ -1,19 +1,31 @@
-import { FiPlus, FiEdit, FiEye, FiSettings } from 'react-icons/fi'
+import { FiPlus, FiEdit, FiEye } from 'react-icons/fi'
 import { RiDeleteBin6Line } from 'react-icons/ri'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
+import Search from './Search'
 
 
 const itemsPerPage = 10
 
 const Booking = () => {
 
-  const {bookingId} = useParams()
+  const params = useParams()
 
   const [bookings, setBookings] = useState([])
   const [bookingCount, setBookingCount] = useState(0)
   const [currentPage, setCurrentPage] = useState(1);
+
+
+
+  const handleBookingSearch = (searchTerm) => {
+    if (!searchTerm) {
+        setBookings(bookings.data)
+    } else {
+      const filteredBookings = bookings.filter((booking) => booking.first_name.toLowerCase().includes(searchTerm.toLowerCase()))
+      setBookings(filteredBookings)
+      }
+  }
 
   const fetchBookings = async () => {
     try {
@@ -42,9 +54,9 @@ const Booking = () => {
     };
   
   
-  const handleDelete = async (bookingId) => {
+  const handleDelete = async (params) => {
     try {
-      const response = await fetch(`http://localhost:8000/api/booking/${bookingId}`, {
+      const response = await fetch(`http://localhost:8000/api/booking/${params}`, {
         method: 'DELETE'
       })
   
@@ -70,6 +82,10 @@ const Booking = () => {
               <h2 className='text-2xl font-bold '>Booking List</h2>
               <p>You have {bookingCount} rooms booked</p>
             </div>
+            
+            {/* Search  */}
+            <Search onSearch={handleBookingSearch}/>
+            {/* End Search */}
             <Link to='addBooking/' className="flex items-center justify-center w-10 h-10 text-white bg-purple-700 rounded ">
                   <FiPlus size={25}  />
              </Link>
@@ -100,9 +116,9 @@ const Booking = () => {
                 <tr key={index} className='border '>
                     <td className="px-6 py-6 ">{ booking.id}</td>
                     <td className="px-6 py-6 ">
-                      <tr className=' flex flex-col'>
+                      <tr className='flex flex-col '>
                         <td>{booking.first_name} {booking.last_name}</td>
-                        <td className=' font-light'>{booking.email_address}</td>
+                        <td className='font-light '>{booking.email_address}</td>
                       </tr>
                     </td>
                     <td className="px-6 py-6 ">{ booking.room_number}</td>
@@ -111,7 +127,7 @@ const Booking = () => {
                     <td className="px-6 py-6 ">{booking.checkin }</td>
                     <td className="px-6 py-6 ">{ booking.checkout}</td>
                     <td className="px-6 py-6"><span className={`${booking.payment === 'paid'? 'text-green-400' : 'text-orange-400'}`}>{booking.payment}</span></td>
-              <th className="px-6 py-6 font-poppins font-bold "><span className={`px-3 py-1 font-light text-white ${booking.status=='inside' ? 'bg-green-300' : 'bg-red-500'} rounded-md`}>{booking.status}</span> </th>
+              <th className="px-6 py-6 font-bold "><span className={`px-3 py-1 font-light text-white ${booking.payment === 'paid' ? 'bg-green-300' : 'bg-red-500'} rounded-md`}>{ booking.payment === 'paid' ? 'checked' : 'not checked'}</span> </th>
                     <td className="px-6 py-6 ">
                     <tr>
                             <Link to={`edit/${booking.id}`}><td className='px-2'>< FiEdit size={18}/></td></Link>
@@ -129,7 +145,7 @@ const Booking = () => {
         {/* Pagination controls */}
         <div className="flex justify-center my-8">
           <button
-            className=' border rounded-md text-white p-2 cursor-pointer bg-purple-700'
+            className='p-2 text-white bg-purple-700 border rounded-md cursor-pointer '
             disabled={currentPage === 1}
             onClick={() => handlePageChange(currentPage - 1)}
           >
@@ -137,9 +153,10 @@ const Booking = () => {
           </button>
           <span className="mx-4">
             Page {currentPage} of {Math.ceil(bookings.length / itemsPerPage)}
+            
           </span>
           <button
-            className=' border rounded-md text-white p-2 cursor-pointer bg-purple-700'
+            className='p-2 text-white bg-purple-700 border rounded-md cursor-pointer '
             disabled={currentPage === Math.ceil(bookings.length / itemsPerPage)}
             onClick={() => handlePageChange(currentPage + 1)}
           >

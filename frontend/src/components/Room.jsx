@@ -3,7 +3,8 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FiPlus } from "react-icons/fi";
-import Graph from "./Graph";
+import Search from "./Search";
+
 
 const itemsPerPage = 10;
 
@@ -11,6 +12,23 @@ const Room = () => {
   const [rooms, setRooms] = useState([]);
   const [roomCount, setRoomCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+
+
+  const handleRoomSearch = (searchTerm) => {
+    if (!searchTerm) {
+      setRooms(rooms.data)
+    } else {
+      const filteredRooms = rooms.filter((room) => room.status.toLowerCase().includes(searchTerm.toLowerCase())
+      || room.room_type.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+      setRooms(filteredRooms)
+    }
+  }
+
+  const styles = {
+    headerStyles: "px-6 py-6 ",
+    bookingBotton: " bg-purple-700 font-bold text-white rounded-md px-3 py-1 hover:bg-purple-500 duration-300"
+  }
 
   const fetchRooms = async () => {
     try {
@@ -71,6 +89,13 @@ const Room = () => {
             </p>
           </div>
 
+          
+          {/* Search Bar */}
+          
+          <Search onSearch={handleRoomSearch} />
+
+          {/* Search Bar */}
+
           <Link
             to="addRoom/"
             className="flex items-center justify-center w-10 h-10 text-white bg-purple-700 rounded "
@@ -81,39 +106,42 @@ const Room = () => {
         <table className="w-full mt-5 text-sm text-left text-gray-500 border rounded-md dark:text-gray-400 ">
           <thead className="uppercase bg-blue-100 ">
             <tr>
-              <th className="px-6 py-6 ">Room Number</th>
-              <th className="px-6 py-6 ">Room Type</th>
-              <th className="px-6 py-6 ">Air condition</th>
-              <th className="px-6 py-6 ">Meal</th>
-              <th className="px-6 py-6 ">Bed Capacity</th>
-              <th className="px-6 py-6 ">Rent</th>
-              <th className="px-6 py-6 ">Status</th>
-              <th className="px-6 py-6 ">action</th>
+              <th className={styles.headerStyles}>Room Number</th>
+              <th className={styles.headerStyles}>Room Type</th>
+              <th className={styles.headerStyles}>Air condition</th>
+              <th className={styles.headerStyles}>Meal</th>
+              <th className={styles.headerStyles}>Bed Capacity</th>
+              <th className={styles.headerStyles}>Rent</th>
+              <th className={styles.headerStyles}>Status</th>
+              <th className={styles.headerStyles}>action</th>
             </tr>
           </thead>
 
           <tbody>
             {itemsToShow.map((room, index) => (
               <tr key={index} className="duration-300 ease-in border">
-                <td className="px-6 py-6 ">{room.room_number}</td>
-                <td className="px-6 py-6 ">{room.room_type}</td>
+                <td className={styles.headerStyles}>{room.room_number}</td>
+                <td className={styles.headerStyles}>{room.room_type}</td>
                 <td className="px-6 py-6 text-green-400 ">
                   {room.air_condition}
                 </td>
                 <td className="px-6 py-6">{room.meal}</td>
-                <td className="px-6 py-6 ">{room.bed_capacity}</td>
-                <td className="px-6 py-6 ">{room.rent} USD</td>
-                <td
-                  className={`px-6 py-6 font-bold ${
+                <td className={styles.headerStyles}>{room.bed_capacity}</td>
+                <td className={styles.headerStyles}>{room.rent} USD</td>
+                <td 
+                >
+                  <tr >
+                    <td className={`px-6 py-6 font-bold ${
                     room.status === "open"
                       ? "text-green-500"
                       : "text-orange-500"
-                  }`}
-                >
-                  {room.status}
+                      }`}>{room.status}</td>
+                    {room.status === 'open' &&  <td className="px-6 py-6 " ><Link to='addBooking/'><span className={styles.bookingBotton}>book</span> </Link> </td>}
+                   
+                  </tr>
                 </td>
 
-                <td className="px-6 py-6 ">
+                <td className={styles.headerStyles}>
                   <tr>
                   <Link to={`edit/${room.id}`}><td className='px-2'>< FiEdit size={18}/></td></Link>
                             <Link to={`${room.id}`}><td className='px-2'>< FiEye size={18}/></td></Link>
@@ -124,12 +152,14 @@ const Room = () => {
             ))}
           </tbody>
         </table>
+
+       
      
 
         {/* Pagination controls */}
-        <div className="flex justify-center my-5 font-poppins">
+        <div className="flex justify-center my-5">
           <button
-            className="p-2 bg-purple-700 border rounded-md text-white  cursor-pointer "
+            className="p-2 text-white bg-purple-700 border rounded-md cursor-pointer "
             disabled={currentPage === 1}
             onClick={() => handlePageChange(currentPage - 1)}
           >
@@ -140,7 +170,7 @@ const Room = () => {
             Page {currentPage} of {Math.ceil(rooms.length / itemsPerPage)}
           </span>
           <button
-            className="p-2 bg-purple-700 border rounded-md text-white cursor-pointer "
+            className="p-2 text-white bg-purple-700 border rounded-md cursor-pointer "
             disabled={currentPage === Math.ceil(rooms.length / itemsPerPage)}
             onClick={() => handlePageChange(currentPage + 1)}
           >

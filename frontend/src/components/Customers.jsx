@@ -47,9 +47,10 @@ const Customers = () => {
              
              
           </div>
-          <table className="w-full mt-5 text-sm text-left text-gray-500 border rounded-md dark:text-gray-600">
+          <table className="w-full mt-5 mb-10 text-sm text-left text-gray-500 border rounded-md dark:text-gray-600">
               <thead className="uppercase bg-blue-100 ">
-              <tr className='border '>
+          <tr className='border '>
+                  <th className="px-6 py-6 ">ID</th>
                   <th className="px-6 py-6 ">Name</th>
                   <th className="px-6 py-6 ">Phone Number</th>
                   <th className="px-6 py-6 ">Room Number</th>
@@ -63,15 +64,14 @@ const Customers = () => {
               <tbody>
                   {itemsToShow.map((customer, index) => (
                     <tr key={index} className='border '>
+                          <td className="px-6 py-6 ">{customer.id}</td>
                           <td className="px-6 py-6 ">{customer.first_name} { customer.last_name}</td>
                           <td className="px-6 py-6 ">{ customer.phone_number}</td>
                           <td className="px-6 py-6 ">{ customer.room_number}</td>
                           <td className="px-6 py-6 ">{ customer.checkin}</td>
                           <td className="px-6 py-6 ">{ customer.checkout}</td>
-                          <th className="px-6 py-6 "><span className={`px-3 py-1 font-light text-white ${customer.status=='inside' ? 'bg-green-300' : 'bg-red-500'} rounded-md`}>{customer.status}</span> </th>
-                       <td className="px-6 py-6 ">
-                      
-                       </td>
+                          <th className="px-6 py-6 "><span className={`px-3 py-1 font-light text-white ${customer.payment=='paid' ? 'bg-green-300' : 'bg-red-500'} rounded-md`}>{customer.payment == 'paid' ? 'checked' : 'not checked'}</span> </th>
+                    
                    </tr>
                   ))}
                  
@@ -82,7 +82,7 @@ const Customers = () => {
       {/* Pagination controls */}
       <div className="flex justify-center mt-5">
           <button
-            className=' border rounded-md text-white p-2 cursor-pointer bg-purple-700'
+            className='p-2 text-white bg-purple-700 border rounded-md cursor-pointer '
             disabled={currentPage === 1}
             onClick={() => handlePageChange(currentPage - 1)}
           >
@@ -92,7 +92,7 @@ const Customers = () => {
             Page {currentPage} of {Math.ceil(customers.length / itemsPerPage)}
           </span>
           <button
-            className=' border rounded-md text-white p-2 cursor-pointer bg-purple-700'
+            className='p-2 text-white bg-purple-700 border rounded-md cursor-pointer '
             disabled={currentPage === Math.ceil(customers.length / itemsPerPage)}
             onClick={() => handlePageChange(currentPage + 1)}
           >

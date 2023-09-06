@@ -24,7 +24,7 @@ const TotalCustomers = () => {
               <h3 className="text-xl font-bold md:text-2xl ">Customers</h3>
               <div>
                   <p>Total customers</p>
-                  <p className="pt-4 text-2xl font-extrabold md:text-4xl font-poppins ">{totalCustomers}</p>
+                  <p className="pt-4 text-2xl font-extrabold md:text-4xl ">{totalCustomers}</p>
               </div>
           </div>
           <div className='absolute px-4 py-1 text-white bg-green-300 rounded-md  top-2 right-2 text-bold'>

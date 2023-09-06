@@ -1,13 +1,17 @@
-import {FiUser} from 'react-icons/fi'
+import { FiUser, } from 'react-icons/fi'
+
+import { useState } from 'react'
+
 
 const Navbar = () => {
+  
   return (
     <div>
-      <nav className=" h-16 shadow-md flex items-center justify-between px-6">
-        <h1>Dashboard</h1>
-        <div className=" flex gap-3">
-          <FiUser size={25} className=" bg-blue-600 rounded-full text-white" />
-          <p className=" font-bold">Ronald</p>
+      <nav className="flex items-center justify-between h-16 px-6 shadow-md ">
+    
+        <div className="flex gap-3 ">
+          <FiUser size={25} className="text-white bg-blue-600 rounded-full " />
+          <p className="font-bold ">Ronald</p>
           
         </div>
       </nav>

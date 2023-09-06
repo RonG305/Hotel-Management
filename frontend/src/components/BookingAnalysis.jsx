@@ -52,9 +52,9 @@ const data = [
  
 
     return (
-        <div  className='border rounded-md p-5 text-center font-poppins' >
-            <h3 className=' my-4'>Booking Analysis</h3>
-            <div className=' relative'>
+        <div  className='p-5 text-center border rounded-md' >
+            <h3 className='my-4 '>Booking Analysis</h3>
+            <div className='relative '>
             <p className=' text-purple-500 md:absolute top-[40%] left-9'>Total Rooms ({roomCount})</p>
                     <ResponsiveContainer width="100%" aspect={3} >
                     <PieChart width={800} height={800}>
@@ -75,7 +75,7 @@ const data = [
                 
                 <p className=' text-orange-500 md:absolute top-[50%] right-9'>Total bookings ({totalBooking})</p>
                 <p>Percentage Bookings</p>
-                <p className={`font-extrabold text-2xl md:4xl ${percentageBookings > 70 ? 'text-green-500' : 'text-orange-700'}`} >{percentageBookings.toFixed(3) } %</p>
+                <p className={`font-extrabold text-2xl md:4xl ${percentageBookings > 70 ? 'text-green-500' : 'text-orange-500'}`} >{percentageBookings.toFixed(3) } %</p>
             </div>
             
             

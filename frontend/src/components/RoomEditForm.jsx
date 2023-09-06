@@ -4,8 +4,8 @@ import { useParams } from "react-router-dom";
 
 const RoomEditForm = () => {
 
-    const navigate = useNavigate()
-    const params = useParams()
+  const navigate = useNavigate()
+  const params = useParams()
 
   const formStyles = " md:w-1/3 outline-none rounded-md  border-gray-300 mx-3 my-4";
 
@@ -39,7 +39,7 @@ const RoomEditForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(`http://localhost:8000/api/rooms/${params.id}`, {
+      const response = await fetch(`http://localhost:8000/api/rooms/${params.id}/`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -53,7 +53,7 @@ const RoomEditForm = () => {
         return navigate('../rooms', {replace:true})
 
       } else {
-        console.log("Failed to update room");
+        console.log("Failed to update room", response.status);
       }
     } catch (error) {
       console.log("An error occured while submitting form data", error);
@@ -69,7 +69,7 @@ const RoomEditForm = () => {
   };
   return (
     <div>
-       <div className=" border rounded-md px-4 py-3 mx-5 my-6 font-extrabold text-2xl">
+       <div className="px-4 py-3 mx-5 my-6 text-2xl font-extrabold border rounded-md ">
         <h2>Update Room</h2>
       </div>
 
@@ -158,7 +158,7 @@ const RoomEditForm = () => {
         </select>
 
         <button
-          className=" rounded-md bg-blue-500 text-bold px-4 py-2 text-white mt-5"
+          className="px-4 py-2 mt-5 text-white bg-blue-500 rounded-md text-bold"
           type="submit"
         >
           update Room
