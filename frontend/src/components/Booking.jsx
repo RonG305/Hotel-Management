@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import Search from './Search'
 
+import Skeleton from 'react-loading-skeleton'
+
 
 const itemsPerPage = 10
 
@@ -27,13 +29,18 @@ const Booking = () => {
       }
   }
 
-  const fetchBookings = async () => {
+  
+  const fetchBookings = async (delayInMilliseconds) => {
     try {
-      const response = await fetch('http://localhost:8000/api/booking/')
-      const data = await response.json()
-      setBookings(data.bookings)
-      setBookingCount(data.booking_count)
-      console.log(data)
+      setTimeout(async() => {
+        const response = await fetch('http://localhost:8000/api/booking/')
+        const data = await response.json()
+        setBookings(data.bookings)
+        setBookingCount(data.booking_count)
+        console.log(data)
+          
+      }, delayInMilliseconds)
+     
     } catch (error) {
       console.log('error, occured while fetching the data', error)
     }
@@ -41,7 +48,7 @@ const Booking = () => {
 
 
   useEffect(() => {
-    fetchBookings()
+    fetchBookings(1000)
   }, [])
 
     // Calculate the range of items to display on the current page
@@ -76,7 +83,8 @@ const Booking = () => {
   
 
   return (
-      <div className="overflow-x-auto ">
+    <div className="overflow-x-auto ">
+      
       <div className='flex justify-between px-3 py-5 mx-3 my-5 border rounded-md '>
             <div>
               <h2 className='text-2xl font-bold '>Booking List</h2>

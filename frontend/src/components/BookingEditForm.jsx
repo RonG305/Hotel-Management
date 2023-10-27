@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const BookingEditForm = () => {
 
@@ -207,15 +208,19 @@ const BookingEditForm = () => {
                       placeholder="checkout"
                   />
 
+                  
+
+                 
+
                   <select
                     className={formStyles}
                     name="payment"
                     value={formData.payment}
                     onChange={handleChange}
-                >
-                    <option value="">Select Payment status</option>
-                    <option value="paid">paid</option>
-                    <option value="pending">pending</option>
+                        >
+                   <option value="">Select Payment status</option>
+                   <option value="paid">paid</option>
+                   <option value="pending">pending</option>
                  
                 
               </select>
@@ -242,7 +247,8 @@ const BookingEditForm = () => {
                       placeholder="description"
                   />
 
-                  <button className="px-10 py-2 bg-blue-400 rounded-md outline-none " type="submit">update</button>
+                  <button className="px-10 py-2 bg-purple-700 rounded-md outline-none mr-4 text-white font-extrabold " type="submit">update</button>
+                  <Link to='../bookings/' className="px-10 py-2 font-extrabold text-white bg-purple-700 rounded-md outline-none ">Back</Link>
                   
               </form>
           </div>

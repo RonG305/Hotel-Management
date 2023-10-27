@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 
 const BookingForm = () => {
@@ -222,9 +223,10 @@ const BookingForm = () => {
                       placeholder="description"
                   />
 
-                  <button className="px-10 py-2 font-extrabold text-white bg-purple-700 rounded-md outline-none " type="submit">Submit</button>
-                  
+                  <button className="px-10 py-2 font-extrabold text-white bg-purple-700 rounded-md outline-none mr-4 " type="submit">Submit</button>
+                  <Link to='../bookings/' className="px-10 py-2 font-extrabold text-white bg-purple-700 rounded-md outline-none ">Back</Link>
               </form>
+             
           </div>
     </div>
   )
