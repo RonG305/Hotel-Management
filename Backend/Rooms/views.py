@@ -8,6 +8,7 @@ from rest_framework import status
 from .serializers import RoomSerializer
 from Rooms.models import Room
 from django.http import Http404
+from rest_framework.decorators import api_view
 
 # Create your views here.
 
